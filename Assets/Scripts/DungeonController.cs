@@ -4,6 +4,7 @@ using UnityEngine;
 public class DungeonController : MonoBehaviour
 {
     [SerializeField] private float _speedMovement = 2.0f;
+    [SerializeField] private float _speedRotation = 1.0f;
 
     private Rigidbody2D _rigidbody;
 
@@ -15,7 +16,14 @@ public class DungeonController : MonoBehaviour
         {
             Vector2 position = (Vector2)transform.position + _speedMovement * Time.fixedDeltaTime * InputManager.Movement;
             _rigidbody.MovePosition(position);
+            
         }
 
+        if(InputManager.AngleRotation != 0.0f)
+        {
+            float angle = _speedRotation * Time.fixedDeltaTime * InputManager.AngleRotation;
+            Quaternion deltaRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            _rigidbody.MoveRotation(transform.rotation * deltaRotation);
+        }
     }
 }
