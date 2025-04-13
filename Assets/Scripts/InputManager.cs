@@ -34,6 +34,8 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
+        if (Game.IsPaused) return;
+
         _movement = _inputActions.Player.Move.ReadValue<Vector2>();
         _angleRotation = _inputActions.Player.Rotate.ReadValue<float>();
     }

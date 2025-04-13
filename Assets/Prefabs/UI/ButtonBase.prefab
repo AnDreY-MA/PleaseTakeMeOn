@@ -188,6 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4b7f21b4bf88547833b5d898bf8822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pressSound: {fileID: 8300000, guid: 6e33ddb37488d2d4192b1d657d3ee8e6, type: 3}
 --- !u!222 &6852363265222376673
 CanvasRenderer:
   m_ObjectHideFlags: 0

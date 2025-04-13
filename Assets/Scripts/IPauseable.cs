@@ -1,4 +1,4 @@
 public interface IPauseable
 {
-    void Pause(bool isPaused);
+    public void Pause(bool isPaused);
 }
