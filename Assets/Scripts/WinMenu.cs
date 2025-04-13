@@ -8,10 +8,7 @@ public class WinMenu : MonoBehaviour
 
     public Action OnToNextLevel;
 
-    private void Awake()
-    {
-        gameObject.SetActive(false);
-    }
+    private void Awake() => gameObject.SetActive(false);
 
     private void OnEnable()
     {

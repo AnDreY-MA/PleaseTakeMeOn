@@ -22,22 +22,16 @@ public class InputManager : MonoBehaviour
         _movement = Vector2.zero;
     }
 
-    private void OnPausePressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
-    {
-        OnPausedPressed?.Invoke();
-    }
+    private void OnPausePressed(UnityEngine.InputSystem.InputAction.CallbackContext obj) => OnPausedPressed?.Invoke();
 
-    private void OnDisable()
-    {
-        _inputActions.Disable();
-    }
+    private void OnDisable() => _inputActions.Disable();
 
     private void Update()
     {
         if (Game.IsPaused) return;
 
         _movement = _inputActions.Player.Move.ReadValue<Vector2>();
-        _angleRotation = _inputActions.Player.Rotate.ReadValue<float>();
+        _angleRotation = _inputActions.Player.Rotate.ReadValue<float>() * -1;
     }
 
 }

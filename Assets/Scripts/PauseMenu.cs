@@ -20,7 +20,6 @@ public class PauseMenu : MonoBehaviour
 
         _mainMenuButton.OnClick += OnMainMenu;
         _mainMenuButton.OnClick += OnQuited;
-        
     }
 
     private void OnDisable()
@@ -32,10 +31,7 @@ public class PauseMenu : MonoBehaviour
         _mainMenuButton.OnClick -= OnQuited;
     }
 
-    private void OnResumed()
-    {
-        OnGameResumed?.Invoke();
-    }
+    private void OnResumed() => OnGameResumed?.Invoke();
 
     private void OnRestart() => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 

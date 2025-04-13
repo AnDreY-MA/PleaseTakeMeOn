@@ -8,10 +8,8 @@ public class Player : MonoBehaviour, IPauseable
 
     public Action OnTreeCompleted;
 
-    private void Start()
-    {
-        _rigidbody = GetComponent<Rigidbody2D>();
-    }
+    private void Start() => _rigidbody = GetComponent<Rigidbody2D>();
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.TryGetComponent<Tree>(out Tree tree))
@@ -26,11 +24,16 @@ public class Player : MonoBehaviour, IPauseable
     private void OnTriggerEnter2D(Collider2D collision)
     {
         OnTreeCompleted?.Invoke();
-        Debug.Log("Trigger: " + collision.gameObject.name);
+
+        if(collision.gameObject.TryGetComponent<Tree>(out Tree tree))
+        {
+            OnTreeCompleted?.Invoke();
+            tree.ApplySmileSloth();
+            GetComponentInChildren<SpriteRenderer>().enabled = false;
+            _rigidbody.simulated = false;
+            Debug.Log("Tree");
+        }
     }
 
-    public void Pause(bool isPaused) 
-    {
-        _rigidbody.simulated = !isPaused;
-    }
+    public void Pause(bool isPaused) => _rigidbody.simulated = !isPaused;
 }

@@ -21,7 +21,10 @@ public class ButtonBase : MonoBehaviour
 
     private void OnButtonClick()
     {
-        _audioSource.PlayOneShot(_pressSound);
+        if(_pressSound != null)
+        {
+            _audioSource.PlayOneShot(_pressSound);
+        }
         OnClick?.Invoke();
     }
 }
